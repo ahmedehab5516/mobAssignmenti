@@ -70,17 +70,21 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn(email: String, password: String) {
-        btnLogin.isEnabled = false // Disable button
+        btnLogin.isEnabled = false
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, MainActivity::class.java))
+
+                // Go to Main and CLEAR login/register from back stack
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
                 finish()
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Login failed: ${it.message}", Toast.LENGTH_LONG).show()
-                btnLogin.isEnabled = true // Re-enable button
+                btnLogin.isEnabled = true
             }
     }
 }

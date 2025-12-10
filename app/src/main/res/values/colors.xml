@@ -29,4 +29,21 @@
     <color name="gray700">#616161</color>
     <color name="gray900">#212121</color>
 
+
+
+    <color name="gray400">#BDBDBD</color>
+    <color name="gray500">#9E9E9E</color>
+    <color name="gray600">#757575</color>
+
+    <color name="gray800">#424242</color>
+
+
+    <!-- Text -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3FFFFFF</color>
+
+    <!-- Gradient -->
+    <color name="gradient_start">#FF8A65</color>
+    <color name="gradient_end">#FF5722</color>
+
 </resources>

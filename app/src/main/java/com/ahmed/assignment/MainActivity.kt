@@ -17,23 +17,22 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // 1. Initialize the UI
         bottomNav = findViewById(R.id.bottom_navigation)
 
-        // 2. Fix Padding (Standard Edge-to-Edge fix)
+        // Edge-to-edge padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_ui)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            // Important: Bottom padding is 0 because the Nav Bar handles its own height
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
 
-        // 3. Load the default screen (Home) so the screen isn't empty on launch
+        // Load default fragment
         if (savedInstanceState == null) {
             loadFragment(HomeFragment())
+            bottomNav.selectedItemId = R.id.nav_home // Optional: highlight home
         }
 
-        // 4. THE NAVIGATION LOGIC
+        // Navigation
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
@@ -53,11 +52,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // 5. The Helper Function to Swap Screens
     private fun loadFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        // 'fragment_container' is the ID of the FrameLayout in activity_main.xml
-        transaction.replace(R.id.bottom_navigation, fragment)
-        transaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment) // CORRECT ID
+            .commit()
     }
 }

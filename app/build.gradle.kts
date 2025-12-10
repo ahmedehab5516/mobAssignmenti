@@ -39,6 +39,9 @@ android {
     }
 
     // FIX: Removed 'buildFeatures { viewBinding = true }' completely.
+    buildFeatures {
+        viewBinding = true   // <-- delete this line
+    }
 }
 
 dependencies {
@@ -62,4 +65,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Retrofit for API calls
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+// Glide for loading posters (now we need it!)
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+// Coroutines for async API calls
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 }
