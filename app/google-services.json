@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "148963159114",
+    "project_id": "cinma-app-e1499",
+    "storage_bucket": "cinma-app-e1499.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148963159114:android:58eadde06c7eb7ce920ab3",
+        "android_client_info": {
+          "package_name": "com.ahmed.assignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo38YAilTu46mu-mULuEL-EHstfhzXpEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
