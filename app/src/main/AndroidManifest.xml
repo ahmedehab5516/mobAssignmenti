@@ -45,6 +45,16 @@
             android:name=".presentation.moviedetail.MovieDetailActivity"
             android:exported="false"
             android:theme="@style/Theme.CinemaApp" />
+
+        <activity
+            android:name=".presentation.seatbooking.SeatSelectionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CinemaApp" />
+
+        <activity
+            android:name=".presentation.seatbooking.BookingConfirmationActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CinemaApp" />
     </application>
 
 </manifest>

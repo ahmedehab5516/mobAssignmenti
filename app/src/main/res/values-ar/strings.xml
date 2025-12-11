@@ -21,6 +21,18 @@
     <string name="cinema_booking">حجز السينما</string>
     <string name="now_showing">الأفلام الحالية</string>
     <string name="coming_soon">قريبا</string>
+    <string name="my_tickets">تذاكري</string>
+    <string name="tickets_subtitle">مقاعدك المحجوزة ومواعيد العرض</string>
+    <string name="nav_home_title">الرئيسية</string>
+    <string name="nav_search_title">بحث</string>
+    <string name="nav_profile_title">الملف الشخصي</string>
+
+    <string name="seat_selection">اختيار المقاعد</string>
+    <string name="booking_confirmed">تم تأكيد الحجز!</string>
+    <string name="no_tickets_yet">لا توجد تذاكر حتى الآن</string>
+    <string name="showtime_label">موعد العرض: %1$s</string>
+    <string name="seats_label">المقاعد: %1$s</string>
+    <string name="continue_watching">استمر في المشاهدة</string>
     <string name="book_now">احجز الآن</string>
     <string name="notify_me">أخبرني</string>
     <string name="logout">تسجيل الخروج</string>

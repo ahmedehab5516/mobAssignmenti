@@ -32,6 +32,8 @@ import com.ahmed.cinema.domain.model.Movie
 import com.ahmed.cinema.ui.theme.CinemaTheme
 import com.ahmed.cinema.util.AppPreferences
 import com.ahmed.cinema.util.Constants
+import com.ahmed.cinema.presentation.seatbooking.SeatSelectionActivity
+import com.ahmed.cinema.util.RecentlyViewedManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -39,8 +41,25 @@ import kotlinx.coroutines.launch
 class MovieDetailActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Log this movie as recently viewed
+        val movieId = intent.getIntExtra("movieId", 0)
+        val movieTitle = intent.getStringExtra("movieTitle") ?: ""
+        val moviePosterPath = intent.getStringExtra("moviePosterPath") ?: ""
+        
+        if (movieId > 0) {
+            lifecycleScope.launch {
+                RecentlyViewedManager.addRecentlyViewed(
+                    this@MovieDetailActivity,
+                    movieId,
+                    movieTitle,
+                    moviePosterPath
+                )
+            }
+        }
+        
         setContent {
-            val isDarkMode by AppPreferences.getDarkModeFlow(this).collectAsState(initial = false)
+            val isDarkMode by AppPreferences.getDarkModeFlow(this@MovieDetailActivity).collectAsState(initial = false)
             
             CinemaTheme(darkTheme = isDarkMode) {
                 MovieDetailScreen(onBackClick = { finish() })
@@ -169,7 +188,13 @@ fun MovieDetailScreen(
 
             Button(
                 onClick = {
-                    Toast.makeText(context, context.getString(R.string.seat_selection_coming), Toast.LENGTH_SHORT).show()
+                    val intent = com.ahmed.cinema.presentation.seatbooking.SeatSelectionActivity.newIntent(
+                        context,
+                        movieId,
+                        movieTitle,
+                        movieReleaseDate.ifBlank { "default" }
+                    )
+                    context.startActivity(intent)
                 },
                 modifier = Modifier
                     .fillMaxWidth()

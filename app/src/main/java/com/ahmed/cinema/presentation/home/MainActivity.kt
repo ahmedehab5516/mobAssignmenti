@@ -18,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.ConfirmationNumber
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -82,8 +83,8 @@ fun MainScreen(viewModel: HomeViewModel = hiltViewModel()) {
         topBar = {
             TopAppBarWithUser(
                 title = "Cinema",
-                onSettingsClick = { selectedTab = 2 },
-                showSettingsIcon = selectedTab < 2
+                onSettingsClick = { selectedTab = 3 },
+                showSettingsIcon = selectedTab < 3
             )
         },
         bottomBar = {
@@ -101,10 +102,16 @@ fun MainScreen(viewModel: HomeViewModel = hiltViewModel()) {
                     onClick = { selectedTab = 1 }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings)) },
-                    label = { Text(stringResource(R.string.settings)) },
+                    icon = { Icon(Icons.Default.ConfirmationNumber, contentDescription = stringResource(R.string.my_tickets)) },
+                    label = { Text(stringResource(R.string.my_tickets)) },
                     selected = selectedTab == 2,
                     onClick = { selectedTab = 2 }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings)) },
+                    label = { Text(stringResource(R.string.settings)) },
+                    selected = selectedTab == 3,
+                    onClick = { selectedTab = 3 }
                 )
             }
         }
@@ -132,7 +139,8 @@ fun MainScreen(viewModel: HomeViewModel = hiltViewModel()) {
                 }
                 context.startActivity(intent)
             }
-            2 -> SettingsTab(Modifier.padding(innerPadding), context as? ComponentActivity)
+            2 -> com.ahmed.cinema.presentation.tickets.MyTicketsScreen()
+            3 -> SettingsTab(Modifier.padding(innerPadding), context as? ComponentActivity)
         }
     }
 }
@@ -145,6 +153,8 @@ fun HomeTab(
 ) {
     val nowPlayingState by viewModel.nowPlayingState.collectAsState()
     val upcomingState by viewModel.upcomingState.collectAsState()
+    val context = LocalContext.current
+    val recentlyViewed by com.ahmed.cinema.util.RecentlyViewedManager.getRecentlyViewedFlow(context).collectAsState(initial = emptyList())
     
     LaunchedEffect(Unit) {
         viewModel.loadNowPlayingMovies()
@@ -164,6 +174,22 @@ fun HomeTab(
             color = MaterialTheme.colorScheme.onBackground
         )
         Spacer(modifier = Modifier.height(16.dp))
+        
+        // Recently Viewed Section
+        if (recentlyViewed.isNotEmpty()) {
+            RecentlyViewedSection(
+                recentlyViewed = recentlyViewed,
+                onMovieClick = { movie ->
+                    val intent = Intent(context, MovieDetailActivity::class.java).apply {
+                        putExtra("movieId", movie.id)
+                        putExtra("movieTitle", movie.title)
+                        putExtra("moviePosterPath", movie.posterPath)
+                    }
+                    context.startActivity(intent)
+                }
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+        }
         
         Text(
             stringResource(R.string.now_showing),
