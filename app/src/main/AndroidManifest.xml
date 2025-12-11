@@ -12,31 +12,39 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Assignment"
-        tools:targetApi="31">
-        <!-- 1. SPLASH IS NOW THE LAUNCHER -->
+        android:theme="@style/Theme.CinemaApp"
+        android:name=".di.CinemaApp"
+        tools:targetApi="35">
+
         <activity
-            android:name=".SplashActivity"
+            android:name=".presentation.auth.LoginActivity"
             android:exported="true"
-            android:theme="@android:style/Theme.NoDisplay">
+            android:theme="@style/Theme.CinemaApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- 2. REMOVE LAUNCHER FROM LoginActivity -->
         <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+            android:name=".presentation.splash.SplashActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoDisplay" />
 
         <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
+            android:name=".presentation.auth.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CinemaApp" />
 
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+            android:name=".presentation.home.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CinemaApp" />
+
+        <activity
+            android:name=".presentation.moviedetail.MovieDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CinemaApp" />
     </application>
 
 </manifest>

@@ -22,7 +22,7 @@
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/placeholder_poster"
+            android:src="@drawable/movie_placeholder"
             app:cardCornerRadius="12dp" />
 
         <!-- Details -->
@@ -38,18 +38,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Inception"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/primary"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:maxLines="2"
                 android:ellipsize="end" />
 
             <TextView
+                android:id="@+id/tv_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:25"
+                android:textColor="@color/primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+
+
+
+            <TextView
                 android:id="@+id/tv_movie_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sci-Fi • Action"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/secondary"
                 android:textSize="13sp"
                 android:layout_marginTop="4dp" />
 
@@ -76,7 +90,7 @@
                     android:layout_marginStart="4dp" />
             </LinearLayout>
 
-            <Space android:layout_height="0dp" android:layout_weight="1" />
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_book"

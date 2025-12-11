@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AppInsightsSettings">
+    <option name="selectedTabId" value="Firebase Crashlytics" />
     <option name="tabSettings">
       <map>
         <entry key="Firebase Crashlytics">
@@ -8,7 +9,7 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.ahmed.assignment" />
+                  <option name="appId" value="com.ahmed.cinema" />
                   <option name="mobileSdkAppId" value="1:148963159114:android:58eadde06c7eb7ce920ab3" />
                   <option name="projectId" value="cinma-app-e1499" />
                   <option name="projectNumber" value="148963159114" />

@@ -1,49 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Primary Brand Colors -->
-    <color name="primary">#F46744</color>
-    <color name="primaryVariant">#D45133</color>
-    <color name="onPrimary">#FFFFFFFF</color>
-
-    <!-- Secondary Colors -->
-    <color name="secondary">#4A90E2</color>
-    <color name="secondaryVariant">#357ABD</color>
-    <color name="onSecondary">#FFFFFFFF</color>
-
-    <!-- Background / Surface -->
-    <color name="background">#FFFFFFFF</color>
-    <color name="onBackground">#808080</color>
-
-    <color name="surface">#FFFFFFFF</color>
-    <color name="onSurface">#FF1A1A1A</color>
-
-    <!-- Error -->
-    <color name="error">#D32F2F</color>
-    <color name="onError">#FFFFFFFF</color>
-
+    <!-- Material 3 Colors -->
+    <color name="primary">#6200EA</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primaryContainer">#EADDFF</color>
+    <color name="onPrimaryContainer">#21005E</color>
+    
+    <color name="secondary">#03DAC6</color>
+    <color name="onSecondary">#000000</color>
+    <color name="secondaryContainer">#B2EBE3</color>
+    <color name="onSecondaryContainer">#004D48</color>
+    
+    <color name="tertiary">#FF6B6B</color>
+    <color name="onTertiary">#FFFFFF</color>
+    <color name="tertiaryContainer">#FFD8D6</color>
+    <color name="onTertiaryContainer">#880000</color>
+    
+    <color name="background">#FFFBFE</color>
+    <color name="onBackground">#1C1B1F</color>
+    <color name="surface">#FFFBFE</color>
+    <color name="onSurface">#1C1B1F</color>
+    <color name="surfaceVariant">#E7E0EC</color>
+    <color name="onSurfaceVariant">#49454E</color>
+    
+    <color name="error">#B3261E</color>
+    <color name="onError">#FFFFFF</color>
+    <color name="errorContainer">#F9DEDC</color>
+    <color name="onErrorContainer">#410E0B</color>
+    
     <!-- Neutral Greys -->
     <color name="gray100">#F5F5F5</color>
     <color name="gray200">#EEEEEE</color>
     <color name="gray300">#E0E0E0</color>
-    <color name="gray700">#616161</color>
-    <color name="gray900">#212121</color>
-
-
-
     <color name="gray400">#BDBDBD</color>
     <color name="gray500">#9E9E9E</color>
     <color name="gray600">#757575</color>
-
+    <color name="gray700">#616161</color>
     <color name="gray800">#424242</color>
-
-
-    <!-- Text -->
-    <color name="text_primary">#FFFFFF</color>
-    <color name="text_secondary">#B3FFFFFF</color>
-
-    <!-- Gradient -->
-    <color name="gradient_start">#FF8A65</color>
-    <color name="gradient_end">#FF5722</color>
-
+    <color name="gray900">#212121</color>
 </resources>
