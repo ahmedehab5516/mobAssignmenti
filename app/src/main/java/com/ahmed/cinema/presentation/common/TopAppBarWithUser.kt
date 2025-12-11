@@ -31,12 +31,12 @@ fun TopAppBarWithUser(
                 overflow = TextOverflow.Ellipsis
             )
         },
-        actions = {
-            if (showSettingsIcon && onSettingsClick != null) {
-                IconButton(onClick = onSettingsClick) {
-                    Icon(Icons.Default.Settings, contentDescription = "Settings")
-                }
-            }
-        }
+//        actions = {
+//            if (showSettingsIcon && onSettingsClick != null) {
+//                IconButton(onClick = onSettingsClick) {
+//                    Icon(Icons.Default.Settings, contentDescription = "Settings")
+//                }
+//            }
+//        }
     )
 }

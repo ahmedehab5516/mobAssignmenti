@@ -52,4 +52,12 @@
     <string name="create_account">Create Account</string>
     <string name="sign_up_to_get_started">Sign up to get started</string>
     <string name="already_have_an_account">Already have an account?</string>
+    
+    <!-- Booking Error Messages -->
+    <string name="error_sign_in_required">Please sign in to book seats</string>
+    <string name="error_seat_taken">Seat %1$s is already taken</string>
+    <string name="error_booking_failed">Booking failed. Please try again</string>
+    <string name="error_loading_movies">Error loading movies</string>
+    <string name="error_loading_favorites">Error loading favorites</string>
+    <string name="no_overview_available">No overview available</string>
 </resources>

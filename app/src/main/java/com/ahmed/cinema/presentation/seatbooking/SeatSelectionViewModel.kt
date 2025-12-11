@@ -1,8 +1,10 @@
 package com.ahmed.cinema.presentation.seatbooking
 
 import android.util.Log
+import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ahmed.cinema.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -34,9 +36,11 @@ data class SeatSelectionUiState(
 )
 
 sealed class SeatSelectionEvent {
-    data class ShowMessage(val message: String) : SeatSelectionEvent()
+    data class ShowMessage(@androidx.annotation.StringRes val messageId: Int, val arg: String? = null) : SeatSelectionEvent()
     data class BookingSuccess(val seats: List<String>) : SeatSelectionEvent()
 }
+
+class BookingConflict(val seatId: String) : Exception()
 
 @HiltViewModel
 class SeatSelectionViewModel @Inject constructor() : ViewModel() {
@@ -125,7 +129,7 @@ class SeatSelectionViewModel @Inject constructor() : ViewModel() {
         val uid = auth.currentUser?.uid
         val selected = _uiState.value.selectedSeatIds
         if (uid == null) {
-            viewModelScope.launch { _events.send(SeatSelectionEvent.ShowMessage("Please sign in")) }
+            viewModelScope.launch { _events.send(SeatSelectionEvent.ShowMessage(R.string.error_sign_in_required)) }
             return
         }
         if (selected.isEmpty() || _uiState.value.isBooking) return
@@ -145,7 +149,7 @@ class SeatSelectionViewModel @Inject constructor() : ViewModel() {
                     seatDocs.forEach { (seatId, snap) ->
                         if (snap.exists() && snap.getBoolean("booked") == true) {
                             Log.w(tag, "bookSeats(): seat already booked -> $seatId")
-                            throw IllegalStateException("Seat $seatId already booked")
+                            throw BookingConflict(seatId)
                         }
                     }
                     seatDocs.forEach { (seatId, _) ->
@@ -174,7 +178,11 @@ class SeatSelectionViewModel @Inject constructor() : ViewModel() {
             } catch (e: Exception) {
                 Log.e(tag, "bookSeats() failed", e)
                 _uiState.value = _uiState.value.copy(isBooking = false, error = e.message)
-                _events.send(SeatSelectionEvent.ShowMessage(e.message ?: "Booking failed"))
+                val event = when (e) {
+                    is BookingConflict -> SeatSelectionEvent.ShowMessage(R.string.error_seat_taken, e.seatId)
+                    else -> SeatSelectionEvent.ShowMessage(R.string.error_booking_failed)
+                }
+                _events.send(event)
             }
         }
     }

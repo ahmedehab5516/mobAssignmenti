@@ -40,11 +40,12 @@ fun SeatSelectionScreen(
     val uiState by viewModel.uiState.collectAsState()
     val snackbarHostState = androidx.compose.material3.SnackbarHostState()
     val tag = "SeatBookingUI"
-    
+    val context = androidx.compose.ui.platform.LocalContext.current
+
     LaunchedEffect(movieId, showtimeId) {
         viewModel.start(movieId, showtimeId)
     }
-    
+
     LaunchedEffect(Unit) {
         viewModel.events.collectLatest { event ->
             when (event) {
@@ -53,8 +54,10 @@ fun SeatSelectionScreen(
                     onBooked(event.seats)
                 }
                 is SeatSelectionEvent.ShowMessage -> {
-                    Log.w(tag, "ShowMessage: ${event.message}")
-                    snackbarHostState.showSnackbar(event.message)
+                    val messageText = event.arg?.let { context.getString(event.messageId, it) }
+                        ?: context.getString(event.messageId)
+                    Log.w(tag, "ShowMessage: $messageText")
+                    snackbarHostState.showSnackbar(messageText)
                 }
             }
         }

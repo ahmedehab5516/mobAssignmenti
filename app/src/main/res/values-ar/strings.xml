@@ -51,4 +51,12 @@
     <string name="sign_up_to_get_started">قم بالتسجيل للبدء</string>
     <string name="already_have_an_account">هل لديك حساب بالفعل؟</string>
     <string name="email_address">عنوان البريد الإلكتروني</string>
+    
+    <!-- Booking Error Messages -->
+    <string name="error_sign_in_required">يرجى تسجيل الدخول لحجز المقاعد</string>
+    <string name="error_seat_taken">المقعد %1$s محتل بالفعل</string>
+    <string name="error_booking_failed">فشل الحجز. يرجى المحاولة مرة أخرى</string>
+    <string name="error_loading_movies">خطأ في تحميل الأفلام</string>
+    <string name="error_loading_favorites">خطأ في تحميل المفضلة</string>
+    <string name="no_overview_available">لا توجد نظرة عامة متاحة</string>
 </resources>
