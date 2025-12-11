@@ -116,9 +116,23 @@ fun RegisterScreen(
         
         Button(
             onClick = {
-                isLoading = true
                 if (password == confirmPassword && email.isNotEmpty() && fullName.isNotEmpty()) {
-                    onRegisterSuccess()
+                    isLoading = true
+                    com.google.firebase.auth.FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                        .addOnSuccessListener { authResult ->
+                            val user = authResult.user
+                            if (user != null) {
+                                val profileUpdates = com.google.firebase.auth.userProfileChangeRequest {
+                                    displayName = fullName
+                                }
+                                user.updateProfile(profileUpdates).addOnCompleteListener {
+                                    onRegisterSuccess()
+                                }
+                            }
+                        }
+                        .addOnFailureListener {
+                            isLoading = false
+                        }
                 }
             },
             modifier = Modifier

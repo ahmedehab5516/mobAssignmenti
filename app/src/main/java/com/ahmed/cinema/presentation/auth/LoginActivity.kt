@@ -16,12 +16,21 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.ahmed.cinema.presentation.home.MainActivity
 import com.ahmed.cinema.ui.theme.CinemaTheme
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Check if user is already logged in
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
+        }
+        
         setContent {
             CinemaTheme {
                 LoginScreen(
@@ -91,9 +100,19 @@ fun LoginScreen(
         
         Button(
             onClick = {
-                isLoading = true
-                // Simulate login - in real app, call Firebase Auth
-                onLoginSuccess()
+                if (email.isNotEmpty() && password.isNotEmpty()) {
+                    isLoading = true
+                    com.google.firebase.auth.FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+                        .addOnSuccessListener {
+                            com.google.firebase.auth.FirebaseAuth.getInstance().currentUser?.reload()
+                                ?.addOnCompleteListener {
+                                    onLoginSuccess()
+                                }
+                        }
+                        .addOnFailureListener {
+                            isLoading = false
+                        }
+                }
             },
             modifier = Modifier
                 .fillMaxWidth()

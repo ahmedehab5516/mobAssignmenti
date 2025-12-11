@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">حجز سينما</string>
+    <string name="home">الرئيسية</string>
+    <string name="favorites">المفضلة</string>
+    <string name="settings">الإعدادات</string>
+    
+    <string name="login_title">أهلا وسهلا</string>
+    <string name="register_title">إنشاء حساب جديد</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="full_name">الاسم الكامل</string>
+    <string name="forgot_password">هل نسيت كلمة المرور؟</string>
+    <string name="login_button_text">تسجيل الدخول</string>
+    <string name="no_account">ليس لديك حساب؟</string>
+    <string name="sign_up">إنشاء حساب</string>
+    <string name="back_to_login">العودة إلى تسجيل الدخول</string>
+    <string name="app_logo">شعار التطبيق</string>
+
+    <string name="cinema_booking">حجز السينما</string>
+    <string name="now_showing">الأفلام الحالية</string>
+    <string name="coming_soon">قريبا</string>
+    <string name="book_now">احجز الآن</string>
+    <string name="notify_me">أخبرني</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="app_version">حجز سينما v1.0</string>
+    <string name="promo_banner">لافتة ترويجية</string>
+    <string name="movie_poster">صورة الفيلم</string>
+    
+    <string name="add_to_favorites">أضف إلى المفضلة</string>
+    <string name="remove_from_favorites">إزالة من المفضلة</string>
+    <string name="no_favorites_yet">لا توجد أفلام مفضلة بعد</string>
+    <string name="back">رجوع</string>
+    <string name="overview">نظرة عامة</string>
+    <string name="seat_selection_coming">اختيار المقاعد قريبا</string>
+    <string name="don_t_have_an_account">ليس لديك حساب؟</string>
+    <string name="create_account">إنشاء حساب</string>
+    <string name="sign_up_to_get_started">قم بالتسجيل للبدء</string>
+    <string name="already_have_an_account">هل لديك حساب بالفعل؟</string>
+    <string name="email_address">عنوان البريد الإلكتروني</string>
+</resources>
